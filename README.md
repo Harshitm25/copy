@@ -465,7 +465,222 @@ public class Lab7
 
 8) enumeration
 
+import java.io.*;
+class Enumaration
+  {
+     public enum DayOfWeek
+         {
+                     MONDAY(1),TUESDAY(2),WEDNESDAY(3),THURSDAY(4),FRIDAY(5),
+SATURDAY(6),SUNDAY(7);
+                     public int val;
+                     DayOfWeek(int val)
+                         {
+                                 this.val=val;
+                         }
+                     boolean isWorkDay()
+                         {
+                                 if(val<6)
+                                             return true;
+                                 else
+                                             return false;
+                         }
+         }
+    public static void main(String[] args)
+         {
+                     DayOfWeek Day;
+                     System.out.println(" verfication of sunday(isWorkDay())");  
+                     System.out.println(DayOfWeek.SUNDAY.isWorkDay());
+                     System.out.println(" verfication of Wednesday(isWorkDay())");  
+                     System.out.println(DayOfWeek.WEDNESDAY.isWorkDay());
+         }
 
+  }
+  
+  
+  9) stack operations
+
+import java.io.DataInputStream;
+interface IntStack
+{
+void push(int item);
+void pop();
+void disp();
+}
+class FixedStack implements IntStack
+{
+private int stck[],top;
+FixedStack(int size)
+{
+stck = new int[size];
+top = -1;
+}
+public void push(int item)
+{
+if(top==stck.length-1)
+System.out.println("Stack Overflow.");
+else
+stck[++top] = item;
+}
+public void pop()
+{
+if(top < 0)
+System.out.println("Stack Underflow.");
+else
+System.out.println("Popped Item : "+stck[top--]);
+}
+public void disp()
+{
+if(top<0)
+System.out.println("Stack Is Empty");
+else
+{
+System.out.println("Stack:");
+for(int i=top;i>=0;i--)
+System.out.println(stck[i]);
+}
+}
+}
+class DynStack implements IntStack
+{
+private int stck[],top;
+DynStack(int size)
+{
+stck = new int[size];
+top = -1;
+}
+public void push(int item)
+{
+if(top==stck.length-1)
+{
+int temp[] = new int[stck.length * 2];
+for(int i=0; i<stck.length; i++) temp[i] = stck[i];
+stck = temp;
+stck[++top] = item;
+}
+else
+stck[++top] = item;
+}
+public void pop()
+{
+if(top < 0)
+System.out.println("Stack Underflow.");
+else
+System.out.println("Popped Item : "+stck[top--]);
+}
+public void disp()
+{
+if(top<0)
+System.out.println("Stack Is Empty");
+else
+{
+System.out.println("Stack:");
+for(int i=top;i>=0;i--)
+System.out.println(stck[i]);
+}
+}
+}
+class lab5
+{
+public static void main(String args[])
+{
+boolean ch=true;
+int choice,n;
+IntStack mystack; // Interface reference variable
+FixedStack fs = new FixedStack(3);
+DynStack ds = new DynStack(3);
+DataInputStream in=new DataInputStream(System.in);
+while(ch)
+{
+try
+{
+System.out.print("\nEnter:\n1. Fixed Stack\n2. Dynamic Stack\n3. Exit\nEnter Your Choice : ");
+choice=Integer.parseInt(in.readLine());
+switch(choice)
+{
+case 1: mystack=fs;
+System.out.print("Enter The Number Of Items : ");
+n=Integer.parseInt(in.readLine());
+for(int i=0;i<n;i++)
+mystack.push(i);
+mystack.disp();
+System.out.print("Enter The Number Of Items To Pop : ");
+n=Integer.parseInt(in.readLine());
+for(int i=0;i<n;i++)
+mystack.pop();
+mystack.disp();
+break;
+case 2: mystack=ds;
+System.out.print("Enter The Number Of Items : ");
+n=Integer.parseInt(in.readLine());
+for(int i=0;i<n;i++)
+mystack.push(i);
+mystack.disp();
+System.out.print("Enter The Number Of Items To Pop : ");
+n=Integer.parseInt(in.readLine());
+for(int i=0;i<n;i++)
+mystack.pop();
+mystack.disp();
+break;
+ case 3: System.exit(1);
+}
+}
+catch(Exception e){}
+}
+}
+}
+
+10) Write a JAVA Program which uses FileInputStream / FileOutPutStream Classes.
+
+package lab;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+public class file
+{
+public static void main(String a[])
+{
+try
+{
+FileInputStream fis=new FileInputStream("C:\\Users\\harshit\\Documents\\source.txt");
+FileOutputStream fos=new FileOutputStream("C:\\Users\\harshit\\Documents\\dest.txt");
+char ch;
+while((ch=(char)fis.read())!=' ')
+fos.write(ch);
+fis.close();
+fos.close();
+System.out.println("File Successfully Copied!\n");
+}
+catch(IOException e)
+{
+System.out.println("Source File Doesn't Fount!\n");
+}
+}
+}
+
+11) Write a JAVA program which demonstrates utilities of LinkedList Class.
+
+import java.util.LinkedList;
+public class LinkedListDemo {
+	public static void main(String[] args) {
+		LinkedList<String> myLinkedList = new LinkedList<String>();
+		myLinkedList.addFirst("A");
+		myLinkedList.add("B");
+		myLinkedList.add("C");
+		myLinkedList.add("D");
+		myLinkedList.add(2, "X");//This will add C at index 2
+		myLinkedList.addLast("Z");
+		System.out.println("Original List before deleting elements");
+		System.out.println(myLinkedList);
+		myLinkedList.remove();
+		myLinkedList.removeLast();
+		myLinkedList.remove("C");
+		System.out.println("Original List After deleting first and last object");
+		System.out.println(myLinkedList);
+		System.out.println("First object in linked list: "+ myLinkedList.getFirst());
+		System.out.println("Last object in linked list: "+ myLinkedList.peekLast());
+	}
+}
 
 
 
