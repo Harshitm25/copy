@@ -807,3 +807,132 @@ function rev_num()
 	</body>
 </html>
 
+10) a)
+
+	<!DOCTYPE html>
+<html>
+	<head>
+		<script src="jquery-1.2.1.js"></script>
+		<script>
+			var maxlength = 15;
+			$(document).ready(function(){
+				$('textarea').keyup(function() {
+				  var textlen = maxlength - $(this).val().length;
+				  $('#rchars').text(textlen);
+				});
+			});
+
+		</script>
+		<title>lab13a</title>
+	</head>
+	<body align="center">
+		<div>
+			<label>Maximum 15 Characters</label> <br/><br/>
+			<textarea id="textarea" maxlength="15"></textarea><br/><br/>
+			<span id="rchars">15</span> Character(s) Remaining
+		</div>
+	</body>
+</html>
+
+
+10) b)
+
+	<!DOCTYPE html>
+<html>
+	<head>
+		<script src="jquery-1.2.1.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#accept').click(function() {
+					if ($('#submitbtn').is(':disabled')) {
+						$('#submitbtn').removeAttr('disabled');
+					} else {
+						$('#submitbtn').attr('disabled', 'disabled');
+					}
+				});
+			});
+		</script>
+		<meta charset="utf-8">
+		<title>lab13b</title>
+	</head>
+	<body>
+		<input type="checkbox" id="accept" name="accept"  value="y"/>I accept<br>
+		<input type="submit" id="submitbtn" disabled="disabled" name="Submit" value="Submit" />
+	</body>
+</html>
+
+11) a )
+
+	<!DOCTYPE html>
+<html>
+	<head>
+		<script type="text/javascript" src="jquery-1.2.1.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+			  $("#btn1").click(function(){
+				$("div").fadeOut(3000);
+			  });
+			   $("#btn2").click(function(){
+				$("div").fadeIn(3000);
+			  }); 
+			});
+		</script>
+		<title>lab14a</title>
+	</head>
+	<body align="center">
+		<button id="btn1">Fade Out</button>
+		<button id="btn2">Fade In</button>
+		<br/><br/>
+		<div style="background:#2E9AFE;">Div One</div><br/>
+		<div style="background:#2E900E;">Div Two</div>
+	</body>
+</html>
+
+
+11) b)
+
+	<html>
+  <head>
+    <title>lab14b</title>
+    <script type="text/javascript"
+            src="jquery-1.2.1.js"></script>
+			
+    <script type="text/javascript">
+      $(function(){
+
+        $('#btn1').click(function(){
+          $('#box').each(function(){
+            $(this).animate(
+              {
+                width: "200px",
+                height: "200px"
+              },
+              'slow'
+            );
+          });
+        });
+		$( "#btn2" ).click(function() {
+			$('#box').each(function(){
+				$(this).animate(
+				  {
+					width: "100px",
+				   height: "100px"   
+				  },
+				  'slow'
+				);
+			});
+		});
+
+      });
+    </script>
+  </head>
+
+  <body>  
+      <div>
+		<button id="btn1">Animate</button>
+		<button id="btn2">Reset</button>
+		<div id="box" style="background:#B40F04;height:100px;width:100px;margin:6px;"></div>
+      </div>
+  </body>
+</html>
+
